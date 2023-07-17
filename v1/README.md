@@ -12,11 +12,12 @@
 >
 > > > **CAUTION**
 
-> > > **CHANGES to last contribution**
+> > > **CHANGES (2023-07-17) to last contribution**
 >
 > - Ontology fetches its own Repository (as seen here)
 > - prefix `elsi` moves to prefix `apre`
-> - **APRE** Data Model [APRE-DM] introduces class *Artificial Agent* (`apre:ArtificialAgent`)
+> - **APRE** Data Model [APRE-DM] introduces class *Artificial Agent* (`apre:ArtificialAgent`) *Service Instance* is derived from
+> - v3 image shows 'act on behalf', 'target' and 'purpose'
 > 
 > > > **CHANGES to last contribution**
 

@@ -33,7 +33,7 @@ apre:
     dct:publisher                 <https:jottomat.solidweb.org/profile/card#me> ;
     dct:created                   "2023-05-24"^^xsd:date ;
     dct:modified                  "2023-07-17"^^xsd:date ;
-    owl:versionInfo               "0.0.1" ;
+    owl:versionInfo               "1.0.1" ;
     vann:preferredNamespaceUri    "https://github.com/nicosResearchAndDevelopment/APRE/tree/main/v1/" ;
     vann:preferredNamespacePrefix "apre:" ;
     void:vocabulary               vann:, void:, voaf:, dct: ;
@@ -41,7 +41,7 @@ apre:
     rdfs:isDefinedBy              <https:jottomat.solidweb.org/profile/card#me> ; .
 
 apre:Attestation
-    a                owl:Class ;                        ## TODO: TBD: abstract?
+    a                owl:Class ;        ## TODO: TBD: abstract?
     rdfs:label       "Attestation"@en ;
     a                skos:Concept ;
     skos:notation    "Attestation" ;
