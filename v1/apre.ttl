@@ -1,0 +1,695 @@
+@prefix dct:                      <http://purl.org/dc/terms/> .
+@prefix owl:                      <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:                      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:                     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:                     <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann:                     <http://purl.org/vocab/vann/> .
+@prefix voaf:                     <http://purl.org/vocommons/voaf#> .
+@prefix void:                     <http://rdfs.org/ns/void#> .
+@prefix xsd:                      <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix foaf:                     <http://xmlns.com/foaf/0.1/> . ## REM: hold **ONLY** for organization
+@prefix org:                      <http://www.w3.org/ns/org#> .  ## REM: hold **ONLY** for organization
+@prefix prov:                     <http://www.w3.org/ns/prov#> . ## REM: hold **ONLY** for organization
+
+@prefix oidref:                   <https://oidref.com/> .
+## TODO: deprecated @prefix oid:                     <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/credentials/x-oid#> .
+@prefix etsi:                     <https://www.etsi.org/> .
+@prefix xetsi-esi:                <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/credentials/x-etsi#> .
+@prefix eidas:                    <https://www.eid.as/> .
+@prefix xeidas:                   <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/credentials/x-eidas#> .
+
+@prefix apre:                     <https://github.com/nicosResearchAndDevelopment/APRE/tree/main/v1/> .
+
+apre:
+    a                             voaf:Vocabulary ;
+    a                             owl:Ontology ;
+    skos:prefLabel                "The Appointed Representative (APRE) Ontology"^^xsd:string ;
+    rdfs:label                    "The Appointed Representative (APRE) Ontology"@en ;
+    dct:title                     "Model for APRE"@en ;
+    dct:description               """."""@en ;
+    dct:creator                   <https:jottomat.solidweb.org/profile/card#me> ;
+    dct:creator                   <https:jottomat.solidweb.org/profile/card#me> ;
+    dct:publisher                 <https:jottomat.solidweb.org/profile/card#me> ;
+    dct:created                   "2023-05-24"^^xsd:date ;
+    dct:modified                  "2023-07-17"^^xsd:date ;
+    owl:versionInfo               "0.0.1" ;
+    vann:preferredNamespaceUri    "https://github.com/nicosResearchAndDevelopment/APRE/tree/main/v1/" ;
+    vann:preferredNamespacePrefix "apre:" ;
+    void:vocabulary               vann:, void:, voaf:, dct: ;
+    rdfs:comment                  """"""@en ;
+    rdfs:isDefinedBy              <https:jottomat.solidweb.org/profile/card#me> ; .
+
+apre:Attestation
+    a                owl:Class ;                        ## TODO: TBD: abstract?
+    rdfs:label       "Attestation"@en ;
+    a                skos:Concept ;
+    skos:notation    "Attestation" ;
+    skos:narrower    apre:Identifier ;
+    rdfs:isDefinedBy apre: .
+
+apre:Identifier
+    a                owl:Class ;        ## TODO: TBD: abstract?
+    rdfs:subClassOf  apre:Attestation ;
+    rdfs:label       "Identifier"@en ;
+    a                skos:Concept ;
+    skos:notation    "Identifier" ;
+    skos:broader     apre:Attestation ;
+    skos:related     apre:NaturalPerson ;
+    skos:related     apre:ArtificialAgent ;
+    rdfs:comment     """For authentication."""@en ;
+    rdfs:isDefinedBy apre: .
+
+apre:NaturalPerson
+    a                owl:Class ;
+    a                skos:Concept ;
+    rdfs:subClassOf  apre:Identifier ;
+    skos:notation    "NaturalPerson" ;
+    skos:broader     apre:Identifier ;
+    skos:related     apre:LEARCredential ;
+    skos:related     xetsi-esi:NaturalPerson ;
+    rdfs:isDefinedBy apre: .
+
+apre:ArtificialAgent
+    a                owl:Class ;
+    a                skos:Concept ;
+    rdfs:subClassOf  apre:Identifier ;
+    skos:notation    "ArtificialAgent" ;
+    skos:broader     apre:Identifier ;
+    skos:narrower    apre:ServiceInstance ;
+    rdfs:comment     """Introducing 'apre:ArtificialAgent' to be used by other non-human subs - like Artificial Intelligence?!? - in the future"""@en ;
+    rdfs:isDefinedBy apre: .
+
+apre:ServiceInstance
+    a                owl:Class ;
+    a                skos:Concept ;
+    rdfs:subClassOf  apre:ArtificialAgent ;
+    skos:notation    "ServiceInstance" ;
+    skos:broader     apre:ArtificialAgent ;
+    skos:related     apre:LEASICredential ;
+    rdfs:isDefinedBy apre: .
+
+## region  property
+## region  property :: commonName (NP, SI)
+apre:cn
+    a                owl:DatatypeProperty ;
+    a                skos:Concept ;
+    owl:sameAs       apre:commonName ;
+    owl:sameAs       apre:2.5.4.3 ;
+    owl:sameAs       oidref:2.5.4.3 ;
+    a                skos:Concept ;
+    skos:notation    "cn"^^xsd:string ;
+    skos:prefLabel   "cn"^^xsd:string ;
+    skos:related     apre:commonName ;
+    skos:related     apre:2.5.4.3 ;
+    # REM: used in 'VerifiableNP' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    rdfs:domain      apre:VerifiableNP ;
+    rdfs:domain      apre:VerifiableSI ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality [0..1]
+    rdfs:comment     """Naming Attribute."""@en ;
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.3> ;
+    rdfs:isDefinedBy apre: .
+
+apre:commonName
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:cn ;
+    owl:sameAs       apre:commonName ;
+    owl:sameAs       apre:2.5.4.3 ;
+    owl:sameAs       oidref:2.5.4.3 ;
+    a                skos:Concept ;
+    skos:notation    "commonName"^^xsd:string ;
+    skos:prefLabel   "cn"^^xsd:string ;
+    skos:related     apre:cn ;
+    skos:related     apre:2.5.4.3 ;
+    skos:related     oidref:2.5.4.3 ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.3> ;
+    rdfs:isDefinedBy apre: .
+
+apre:2.5.4.3
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:cn ;
+    owl:sameAs       apre:commonName ;
+    owl:sameAs       oidref:2.5.4.3 ;
+    a                skos:Concept ;
+    skos:notation    "2.5.4.3"^^xsd:string ;
+    skos:prefLabel   "cn"^^xsd:string ;
+    skos:related     apre:cn ;
+    skos:related     apre:commonName ;
+    skos:related     oidref:2.5.4.3 ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.3> ;
+    rdfs:isDefinedBy apre: .
+## endregion  property :: commonName
+## region  property :: serialNumber (NP, SI)
+apre:serialNumber
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:2.5.4.5 ;
+    owl:sameAs       oidref:2.5.4.5 ;
+    ## TODO: TBC: subPropertyOf 'oidref:2.5.4.5' (if 'xetsi-esi:id-etsi-qcs-SemanticsId-Natural' is chosen?!?)
+    a                skos:Concept ;
+    skos:notation    "serialNumber"^^xsd:string ;
+    skos:prefLabel   "serialNumber"^^xsd:string ;
+    skos:related     apre:2.5.4.5 ;
+    skos:related     oidref:2.5.4.5 ;
+    skos:related     xeidas:PersonIdentifier ;
+    ## TODO: TBC: skos:broader     oidref:2.5.4.5 ;
+    # REM: used in 'VerifiableNP' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    rdfs:domain      apre:NaturalPerson ;
+    rdfs:domain      apre:ArtificialAgent ;
+    ## TODO: TBC: is 'xsd:string' AND 'xetsi-esi:id-etsi-qcs-SemanticsId-Natural' correct?!?
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:range       xetsi-esi:id-etsi-qcs-SemanticsId-Natural ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.5> ;
+    rdfs:isDefinedBy apre: .
+
+apre:2.5.4.5
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:serialNumber ;
+    ## TODO: TBC: subPropertyOf 'oidref:2.5.4.5' (if 'xetsi-esi:id-etsi-qcs-SemanticsId-Natural' is chosen?!?)
+    a                skos:Concept ;
+    skos:notation    "2.5.4.5"^^xsd:string ;
+    skos:prefLabel   "serialNumber"^^xsd:string ;
+    skos:related     apre:serialNumber ;
+    skos:related     oidref:2.5.4.5 ;
+    skos:related     xeidas:PersonIdentifier ;
+    ## TODO: TBC: skos:broader     oidref:2.5.4.5 ;
+    ## TODO: TBC: is 'xsd:string' AND 'xetsi-esi:id-etsi-qcs-SemanticsId-Natural' correct?!?
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:range       xetsi-esi:id-etsi-qcs-SemanticsId-Natural ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.5> ;
+    rdfs:isDefinedBy apre: .
+## endregion  property :: serialNumber
+## region  property :: description (NP, SI)
+apre:description
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:2.5.4.13 ;
+    owl:sameAs       oidref:2.5.4.13 ;
+    a                skos:Concept ;
+    skos:notation    "description"^^xsd:string ;
+    skos:prefLabel   "description"^^xsd:string ;
+    skos:related     apre:2.5.4.13 ;
+    skos:related     oidref:2.5.4.13 ;
+    # REM: used in 'VerifiableNP' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    rdfs:domain      apre:NaturalPerson ;
+    rdfs:domain      apre:ArtificialAgent ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.13> ;
+    rdfs:isDefinedBy apre: .
+
+apre:2.5.4.13
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:description ;
+    owl:sameAs       oidref:2.5.4.13 ;
+    a                skos:Concept ;
+    skos:notation    "2.5.4.13"^^xsd:string ;
+    skos:prefLabel   "description"^^xsd:string ;
+    skos:related     apre:description ;
+    skos:related     oidref:2.5.4.13 ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.13> ;
+    rdfs:isDefinedBy apre: .
+## endregion  property :: description
+## region  property :: surname (NP)
+apre:sn
+    a                owl:DatatypeProperty ;
+    a                skos:Concept ;
+    owl:sameAs       apre:surname ;
+    owl:sameAs       apre:2.5.4.4 ;
+    owl:sameAs       oidref:2.5.4.4 ;
+    a                skos:Concept ;
+    skos:notation    "sn"^^xsd:string ;
+    skos:prefLabel   "surname"^^xsd:string ;
+    skos:related     apre:surname ;
+    skos:related     apre:2.5.4.4 ;
+    skos:related     oidref:2.5.4.4 ;
+    rdfs:domain      apre:NaturalPerson ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality [0..1]
+    rdfs:comment     """Naming Attribute."""@en ;
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.4> ;
+    rdfs:isDefinedBy apre: .
+
+apre:surname
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:sn ;
+    owl:sameAs       apre:2.5.4.4 ;
+    owl:sameAs       oidref:2.5.4.4 ;
+    a                skos:Concept ;
+    skos:notation    "surname"^^xsd:string ;
+    skos:prefLabel   "surname"^^xsd:string ;
+    skos:related     apre:sn ;
+    skos:related     apre:2.5.4.4 ;
+    skos:related     oidref:2.5.4.4 ;
+    skos:related     xeidas:FamilyName ;
+    # REM: used in 'VerifiableNP' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    rdfs:domain      apre:NaturalPerson ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.4> ;
+    rdfs:isDefinedBy apre: .
+
+apre:2.5.4.4
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:sn ;
+    owl:sameAs       apre:surname ;
+    owl:sameAs       oidref:2.5.4.4 ;
+    a                skos:Concept ;
+    skos:notation    "2.5.4.4"^^xsd:string ;
+    skos:prefLabel   "surname"^^xsd:string ;
+    skos:related     apre:sn ;
+    skos:related     apre:surname ;
+    skos:related     xeidas:FamilyName ;
+    skos:related     oidref:2.5.4.4 ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.4> ;
+    rdfs:isDefinedBy apre: .
+## endregion  property :: surname
+## region  property :: givenName  (NP)
+apre:givenName
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:2.5.4.42 ;
+    owl:sameAs       oidref:2.5.4.42 ;
+    a                skos:Concept ;
+    skos:notation    "givenName"^^xsd:string ;
+    skos:prefLabel   "givenName"^^xsd:string ;
+    skos:related     apre:2.5.4.42 ;
+    skos:related     oidref:2.5.4.42 ;
+    skos:related     xeidas:FirstName ;
+    # REM: used in 'VerifiableNP' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    rdfs:domain      apre:NaturalPerson ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.42> ;
+    rdfs:isDefinedBy apre: .
+
+apre:2.5.4.42
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:sn ;
+    owl:sameAs       apre:surname ;
+    owl:sameAs       oidref:2.5.4.42 ;
+    a                skos:Concept ;
+    skos:notation    "2.5.4.42"^^xsd:string ;
+    skos:prefLabel   "givenName"^^xsd:string ;
+    skos:related     apre:givenName ;
+    skos:related     oidref:2.5.4.42 ;
+    skos:related     xeidas:FirstName ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.42> ;
+    rdfs:isDefinedBy apre: .
+## endregion  property :: givenName
+## region  property :: dateOfBirth  (NP)
+apre:dateOfBirth
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:1.3.6.1.5.5.7.9.1 ;
+    owl:sameAs       apre:id-pda-dateOfBirth ;
+    owl:sameAs       oidref:1.3.6.1.5.5.7.9.1 ;
+    a                skos:Concept ;
+    skos:notation    "dateOfBirth"^^xsd:string ;
+    skos:prefLabel   "dateOfBirth"^^xsd:string ;
+    skos:related     apre:1.3.6.1.5.5.7.9.1 ;
+    skos:related     oidref:1.3.6.1.5.5.7.9.1 ;
+    skos:related     xeidas:DateOfBirth ;
+    # REM: used in 'VerifiableNP' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    rdfs:domain      apre:NaturalPerson ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/1.3.6.1.5.5.7.9.1> ;
+    rdfs:isDefinedBy apre: .
+
+apre:id-pda-dateOfBirth
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:dateOfBirth ;
+    owl:sameAs       apre:1.3.6.1.5.5.7.9.1 ;
+    owl:sameAs       oidref:1.3.6.1.5.5.7.9.1 ;
+    a                skos:Concept ;
+    skos:notation    "id-pda-dateOfBirth"^^xsd:string ;
+    skos:prefLabel   "dateOfBirth"^^xsd:string ;
+    skos:related     apre:description ;
+    skos:related     oidref:1.3.6.1.5.5.7.9.1 ;
+    skos:related     xeidas:DateOfBirth ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/1.3.6.1.5.5.7.9.1> ;
+    rdfs:isDefinedBy apre: .
+
+apre:1.3.6.1.5.5.7.9.1
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:dateOfBirth ;
+    owl:sameAs       apre:1.3.6.1.5.5.7.9.1 ;
+    owl:sameAs       apre:id-pda-dateOfBirth ;
+    a                skos:Concept ;
+    skos:notation    "1.3.6.1.5.5.7.9.1"^^xsd:string ;
+    skos:prefLabel   "dateOfBirth"^^xsd:string ;
+    skos:related     apre:description ;
+    skos:related     oidref:1.3.6.1.5.5.7.9.1 ;
+    skos:related     xeidas:DateOfBirth ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/1.3.6.1.5.5.7.9.1> ;
+    rdfs:isDefinedBy apre: .
+## endregion  property :: dateOfBirth
+## region  property :: countryName (NP, SI)
+apre:c
+    a                owl:DatatypeProperty ;
+    a                skos:Concept ;
+    owl:sameAs       apre:countryName ;
+    owl:sameAs       apre:2.5.4.6 ;
+    owl:sameAs       oidref:2.5.4.6 ;
+    a                skos:Concept ;
+    skos:notation    "c"^^xsd:string ;
+    skos:prefLabel   "countryName"^^xsd:string ;
+    skos:related     apre:countryName ;
+    skos:related     apre:2.5.4.6 ;
+    skos:related     oidref:2.5.4.6 ;
+    rdfs:domain      apre:NaturalPerson ;
+    rdfs:domain      apre:ArtificialAgent ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality [0..1]
+    rdfs:comment     """Naming Attribute."""@en ;
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.6> ;
+    rdfs:isDefinedBy apre: .
+
+apre:countryName
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:c ;
+    owl:sameAs       apre:2.5.4.6 ;
+    owl:sameAs       oidref:2.5.4.6 ;
+    a                skos:Concept ;
+    skos:notation    "countryName"^^xsd:string ;
+    skos:prefLabel   "countryName"^^xsd:string ;
+    skos:related     apre:c ;
+    skos:related     apre:2.5.4.6 ;
+    skos:related     oidref:2.5.4.6 ;
+    # REM: used in 'VerifiableNP' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    rdfs:domain      apre:NaturalPerson ;
+    rdfs:domain      apre:ArtificialAgent ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.6> ;
+    rdfs:isDefinedBy apre: .
+
+apre:2.5.4.6
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:c ;
+    owl:sameAs       apre:countryName ;
+    owl:sameAs       oidref:2.5.4.6 ;
+    a                skos:Concept ;
+    skos:notation    "2.5.4.6"^^xsd:string ;
+    skos:prefLabel   "countryName"^^xsd:string ;
+    skos:related     apre:c ;
+    skos:related     apre:countryName ;
+    skos:related     oidref:2.5.4.6 ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.6> ;
+    rdfs:isDefinedBy apre: .
+## endregion  property :: countryName
+## region  property :: organizationIdentifier (NP, SI)
+apre:organizationIdentifier
+    a                  owl:DatatypeProperty ;
+    rdfs:subPropertyOf oidref:2.5.4.97 ;
+    owl:sameAs         apre:2.5.4.97 ;
+    dct:description    """
+'apre:organizationIdentifier' is a sub-property of 'oidref:2.5.4.97' with given data-type 'xetsi-esi:id-etsi-qcs-SemanticsId-Legal'
+definition of 'oidref:2.5.4.97' ::
+organizationIdentifier ATTRIBUTE ::= {
+WITH SYNTAX UnboundedDirectoryString
+EQUALITY MATCHING RULE caseIgnoreMatch
+SUBSTRINGS MATCHING RULE caseIgnoreSubstringsMatch
+SINGLE VALUE TRUE
+LDAP-SYNTAX directoryString.&id
+LDAP-NAME {"organizationIdentifier"}
+ID id-at-organizationIdentifier}
+    """^^xsd:string ;
+    a                  skos:Concept ;
+    skos:notation      "organizationIdentifier"^^xsd:string ;
+    skos:prefLabel     "organizationIdentifier"^^xsd:string ;
+    skos:broader       oidref:2.5.4.97 ;
+    skos:related       apre:2.5.4.97 ;
+    skos:related       xeidas:LegalPersonIdentifier ;
+    # REM: used in 'VerifiableNP' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    rdfs:domain        apre:NaturalPerson ;
+    rdfs:domain        apre:ArtificialAgent ;
+    rdfs:range         xetsi-esi:id-etsi-qcs-SemanticsId-Legal ;            ## TODO: cardinality []
+    rdfs:seeAlso       <http://oid-info.com/get/2.5.4.97> ;
+    rdfs:seeAlso       <https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.04.01_60/en_31941201v010401p.pdf#5.1.4> ;
+    rdfs:isDefinedBy   apre: .
+
+apre:2.5.4.97
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:organizationIdentifier ;
+    owl:sameAs       oidref:2.5.4.97 ;
+    a                skos:Concept ;
+    skos:notation    "2.5.4.97"^^xsd:string ;
+    skos:prefLabel   "organizationIdentifier"^^xsd:string ;
+    skos:broader     oidref:2.5.4.97 ;
+    skos:related     apre:organizationIdentifier ;
+    skos:related     xeidas:LegalPersonIdentifier ;
+    rdfs:range       xetsi-esi:id-etsi-qcs-SemanticsId-Legal ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.97> ;
+    rdfs:seeAlso     <https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.04.01_60/en_31941201v010401p.pdf#5.1.4> ;
+    rdfs:isDefinedBy apre: .
+## endregion  property :: organizationIdentifier
+## region  property :: organizationName (NP, SI)
+apre:o
+    a                owl:DatatypeProperty ;
+    a                skos:Concept ;
+    owl:sameAs       apre:organizationName ;
+    owl:sameAs       apre:2.5.4.10 ;
+    owl:sameAs       oidref:2.5.4.10 ;
+    a                skos:Concept ;
+    skos:notation    "o"^^xsd:string ;
+    skos:prefLabel   "organizationName"^^xsd:string ;
+    skos:related     apre:organizationName ;
+    skos:related     apre:2.5.4.10 ;
+    skos:related     oidref:2.5.4.10 ;
+    rdfs:domain      apre:NaturalPerson ;
+    rdfs:domain      apre:ArtificialAgent ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality [0..1]
+    rdfs:comment     """Naming Attribute."""@en ;
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.10> ;
+    rdfs:isDefinedBy apre: .
+
+apre:organizationName
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:o ;
+    owl:sameAs       apre:2.5.4.10 ;
+    owl:sameAs       oidref:2.5.4.10 ;
+    a                skos:Concept ;
+    skos:notation    "organizationName"^^xsd:string ;
+    skos:prefLabel   "organizationName"^^xsd:string ;
+    skos:related     apre:o ;
+    skos:related     apre:2.5.4.10 ;
+    skos:related     oidref:2.5.4.10 ;
+    rdfs:domain      apre:NaturalPerson ;
+    rdfs:domain      apre:ArtificialAgent ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.10> ;
+    rdfs:isDefinedBy apre: .
+
+apre:2.5.4.10
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:o ;
+    owl:sameAs       apre:organizationName ;
+    owl:sameAs       oidref:2.5.4.10 ;
+    a                skos:Concept ;
+    skos:notation    "2.5.4.10"^^xsd:string ;
+    skos:prefLabel   "organizationName"^^xsd:string ;
+    skos:related     apre:o ;
+    skos:related     apre:organizationName ;
+    skos:related     oidref:2.5.4.10 ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.10> ;
+    rdfs:isDefinedBy apre: .
+## endregion  property :: organizationName
+## region  property :: organizationUnitName (NP, SI)
+apre:ou
+    a                owl:DatatypeProperty ;
+    a                skos:Concept ;
+    owl:sameAs       apre:organizationUnitName ;
+    owl:sameAs       apre:2.5.4.11 ;
+    owl:sameAs       oidref:2.5.4.11 ;
+    a                skos:Concept ;
+    skos:notation    "o"^^xsd:string ;
+    skos:prefLabel   "organizationUnitName"^^xsd:string ;
+    skos:related     apre:organizationUnitName ;
+    skos:related     apre:2.5.4.11 ;
+    skos:related     oidref:2.5.4.11 ;
+    skos:related     xeidas:LegalName ;
+    rdfs:domain      apre:NaturalPerson ;
+    rdfs:domain      apre:ArtificialAgent ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality [0..1]
+    rdfs:comment     """Naming Attribute."""@en ;
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.11> ;
+    rdfs:isDefinedBy apre: .
+
+apre:organizationUnitName
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:ou ;
+    owl:sameAs       apre:2.5.4.11 ;
+    owl:sameAs       oidref:2.5.4.11 ;
+    a                skos:Concept ;
+    skos:notation    "organizationUnitName"^^xsd:string ;
+    skos:prefLabel   "organizationUnitName"^^xsd:string ;
+    skos:related     apre:ou ;
+    skos:related     apre:2.5.4.11 ;
+    skos:related     oidref:2.5.4.11 ;
+    skos:related     xeidas:LegalName ;
+    # REM: used in 'VerifiableNP' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    rdfs:domain      apre:NaturalPerson ;
+    rdfs:domain      apre:ArtificialAgent ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.11> ;
+    rdfs:isDefinedBy apre: .
+
+apre:2.5.4.11
+    a                owl:DatatypeProperty ;
+    owl:sameAs       apre:ou ;
+    owl:sameAs       apre:organizationUnitName ;
+    owl:sameAs       oidref:2.5.4.11 ;
+    a                skos:Concept ;
+    skos:notation    "2.5.4.11"^^xsd:string ;
+    skos:prefLabel   "organizationUnitName"^^xsd:string ;
+    skos:related     apre:ou ;
+    skos:related     apre:organizationUnitName ;
+    skos:related     oidref:2.5.4.11 ;
+    rdfs:range       xsd:string ;            ## TODO: cardinality []
+    rdfs:seeAlso     <http://oid-info.com/get/2.5.4.11> ;
+    rdfs:isDefinedBy apre: .
+## endregion  property :: organizationUnitName
+## endregion  property
+
+## region Authorisation
+
+apre:Authorisation
+    a                owl:Class ;        ## TODO: TBD: abstract?
+    a                skos:Concept ;
+    skos:notation    "Authorisation" ;
+    skos:related     apre:LEARCredential ;
+    skos:related     apre:LEASICredential ;
+    rdfs:comment     """For authorisation."""@en ;
+    rdfs:isDefinedBy apre: .
+
+## region Authorisation :: property
+## region Authorisation :: property :: actOnBehalf
+## TODO: TBD: 'apre:actOnBehalf'
+## TODO: TBD: **OR**
+## TODO: TBD: 'apre:legalEntity'
+apre:actOnBehalf
+    a                owl:ObjectProperty ;
+    a                skos:Concept ;
+    skos:notation    "actOnBehalf"^^xsd:string ;
+    skos:prefLabel   "act on behalf"^^xsd:string ;
+    ## REM: skos:related      https://www.w3.org/TR/prov-o/#actedOnBehalfOf; ## REM: past!!!
+    ## REM: used in 'Authorisation' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    rdfs:domain      apre:Authorisation ;
+    ## TODO: TBC: rdfs:range      rdfs:Resource  ;      ## TODO: cardinality [0..1]?!?
+    ## TODO: TBC: rdfs:range      **OR**
+    ## TODO: TBC: rdfs:range      apre:LegalEntity
+    rdfs:isDefinedBy apre: .
+## endregion Authorisation :: property :: actOnBehalf
+## region Authorisation :: property :: target
+## TODO: TBC: 'apre:target'
+apre:target
+    a                owl:DatatypeProperty ;
+    a                skos:Concept ;
+    skos:notation    "target"^^xsd:string ;
+    skos:prefLabel   "target"^^xsd:string ;
+    ## REM: used in 'Authorisation' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    rdfs:domain      apre:Authorisation ;
+    rdfs:range       xsd:anyURI ;      ## TODO: cardinality [0..1]?!?
+    rdfs:isDefinedBy apre: .
+## endregion Authorisation :: property :: target
+## region Authorisation :: property :: purpose
+## TODO: TBC: 'apre:purpose'
+## REM: 'apre:purpose' :: this will (hopefully) replace 'rolesAndDuties'... ;-)
+apre:purpose
+    a                owl:ObjectProperty ;
+    a                skos:Concept ;
+    skos:notation    "purpose"^^xsd:string ;
+    skos:prefLabel   "purpose"^^xsd:string ;
+    ## REM: used in 'Authorisation' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    rdfs:domain      apre:Authorisation ;
+    ## TODO: TBD: 'apre:purpose' :: rdfs:range       apre:Purpose
+    ## TODO: TBD: JLA thinks, that it **MUST** be [0..n]
+    rdfs:range       apre:Purpose ;      ## TODO: cardinality [0..n]?!?
+    ## REM: **OR**
+    ## REM: rdfs:range       rdfs:Resource ;
+    rdfs:isDefinedBy apre: .
+## endregion Authorisation :: property :: purpose
+## endregion Authorisation :: property
+## endregion Authorisation
+
+## region Credential
+
+apre:LEARCredential
+    a                owl:Class ;
+    rdfs:subClassOf  apre:NaturalPerson ;
+    rdfs:subClassOf  apre:Authorisation ;
+    rdfs:label       "LEARCredential"@en ;
+    dct:description  """Credential of a 'Legal Entity Appointed Representative'."""@en ;
+    a                skos:Concept ;
+    skos:notation    "LEARCredential" ;
+    skos:broader     apre:NaturalPerson ;
+    skos:broader     apre:Authorisation ;
+    rdfs:comment     """For authentication and authorisation of given Natural Person."""@en ;
+    rdfs:isDefinedBy apre: .
+
+apre:LEASICredential
+    a                owl:Class ;
+    rdfs:subClassOf  apre:ServiceInstance ;
+    rdfs:subClassOf  apre:Authorisation ;
+    rdfs:label       "LEASICredential"@en ;
+    dct:description  """Credential of a 'Legal Entity Appointed Service Instance'."""@en ;
+    a                skos:Concept ;
+    skos:notation    "LEASICredential" ;
+    skos:broader     apre:ServiceInstance ;
+    skos:broader     apre:Authorisation ;
+    rdfs:comment     """For authentication and authorisation of given Service Instance."""@en ;
+    rdfs:isDefinedBy apre: .
+
+## endregion Credential
+
+## region misc
+##
+## REM: held for future use, maybe deprecated
+##
+apre:LegalEntity
+    a                owl:Class ;
+    a                skos:Concept ;
+    skos:related     xetsi-esi:LegalEntity ;
+    skos:narrower    apre:Organization ;
+    rdfs:isDefinedBy apre: .
+
+apre:Organization                               ## REM: "z"
+    a                owl:Class ;
+    a                foaf:Organization ;        ## REM: **foaf**
+    a                org:Organization ;         ## REM: **org**
+    a                prov:Organization ;        ## REM: **prov**
+    rdfs:subClassOf  apre:LegalEntity ;
+    a                skos:Concept ;
+    skos:broader     apre:LegalEntity ;
+    rdfs:seeAlso     <https://www.w3.org/TR/vocab-org/#class-organization> ;
+    rdfs:seeAlso     <https://www.w3.org/TR/2013/REC-prov-o-20130430/#Organization> ;
+    rdfs:isDefinedBy apre: .
+
+apre:TrustServiceProvider
+    a                owl:Class ;
+    rdfs:subClassOf  foaf:Agent ;
+    rdfs:subClassOf  apre:LegalEntity ;
+    a                skos:Concept ;
+    rdfs:isDefinedBy apre: .
+
+apre:TrustList
+    a                owl:Class ;
+    a                skos:Concept ;
+#    org:member       <> ;
+#    foaf:member      <> ;
+    rdfs:isDefinedBy apre: .
+
+apre:trustList
+    a                owl:ObjectProperty ;
+    rdfs:range       apre:TrustList ;
+    rdfs:domain      apre:ListOfTrustLists ;
+    rdfs:isDefinedBy apre: .
+
+apre:ListOfTrustLists
+    a                owl:Class ;
+    a                skos:Concept ;
+    rdfs:isDefinedBy apre: .
+
+## endregion misc
+
+## EOF: apre.ttl

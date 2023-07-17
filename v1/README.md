@@ -12,6 +12,14 @@
 >
 > > > **CAUTION**
 
+> > > **CHANGES to last contribution**
+>
+> - Ontology fetches its own Repository (as seen here)
+> - prefix `elsi` moves to prefix `apre`
+> - **APRE** Data Model [APRE-DM] introduces class *Artificial Agent* (`apre:ArtificialAgent`)
+> 
+> > > **CHANGES to last contribution**
+
 J. Langkau
 
 ---
@@ -39,10 +47,18 @@ This document describes the architecture of "Appointed Representatives, acting o
 - [Introduction](#introduction)
 - [Conventions](#conventions)
 - [Model](#model)
+- [Versions](#versions)
+    - [Version 1](#version-1)
+    - [Version 2](#version-2)
+    - [Version 3](#version-3)
 - [See Also](#see-also)
 - [References](#references)
 
 *Table of content 'Appointed Representatives', **APRE***.
+
+---
+
+## Introduction
 
 ---
 
@@ -61,25 +77,29 @@ Given model (following version 3 so far) is very aligned to semantics of
 - ETSI-ESI
 - eIDAS (certificates)
 
-Being precise, it introduces [`x-etsi-esi` (extension for EIDAS ESI)](./x-etsi/) and `x-eidas` (extension for eIDAS), showing the given path to
+Being precise, it introduces [`x-etsi-esi` (extension for EIDAS ESI)](./x-etsi/) and [`x-eidas` (extension for eIDAS)](./x-eidas/), showing the given path to
 **APRE**.
 
 Expression of given Subject (*Natural Person* (version 1) and  *Service
-Instance* (version 2, 3)) the semantics fit to given X.509-subject properties, those are well known, well defined, stable and borrowed from X.500, etc. It drills down the problem of "many cooks have many ingredients", but they are strictly bound (`skos.relation`) to ETSI-ESI/eIADS.
+Instance* (version 2, 3)) the semantics fit to given X.509-subject properties, those are well known, well-defined, stable and borrowed from X.500, etc. It drills down the problem of "many cooks have many ingredients", but they are strictly bound (`skos:relation`) to ETSI-ESI/eIADS.
 
-`oid`: see an example here
+`oid`: see an example...
 
 - here: ["organizationIdentifier", (http://oid-info.com/cgi-bin/display?oid=2.5.4.97&a=display)](http://oid-info.com/cgi-bin/display?oid=2.5.4.97&a=display)
-- *or*
-- here: ["organizationIdentifier", (https://oidref.com/2.5.4.97)](https://oidref.com/2.5.4.97)
+
+*or*
+
+- here: ["organizationIdentifier", (https://oidref.com/2.5.4.97)](https://oidref.com/2.5.4.97).
 
 All version are based on this. Differences between those are not such big, following the same idea of "given Agent acts on behalf". (See also ["Extending Actor Models in Data Spaces", (2023)](https://www.researchgate.net/publication/370414004_Extending_Actor_Models_in_Data_Spaces)).
 
-Information Model, at this time in `turtle` (`json-ld-@context-thingy` will follow), please click here: [apre.ttl (Buy it now!!! Fresh version 3!!!)](./apre.ttl).
+Information Model, at this time in `turtle` (`json-ld-@context-thingy` will follow and is started [here, very imperfect](./apre.json)), please click here: [apre.ttl (Buy it now!!! Fresh version 3!!!)](./apre.ttl).
 
 ---
 
-## Version 1
+## Versions
+
+### Version 1
 
 Jesus Ruiz, Alastria
 
@@ -94,7 +114,7 @@ Picture taken from [Authentication and authorization of entities acting on behal
 
 ---
 
-## Version 2
+### Version 2
 
 Jörg Langkau, nicos AG
 
@@ -114,7 +134,7 @@ This version ("derived" from Jesus' Ruiz Version 1) introduces:
 
 ---
 
-## Version 3
+### Version 3
 
 Langkau, nicos AG
 

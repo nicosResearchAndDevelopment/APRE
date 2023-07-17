@@ -1,0 +1,47 @@
+{
+  "@context": {
+    "@version": 1,
+    "@protected": true,
+    "cred": "https://www.w3.org/2018/credentials#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "apre": "https://github.com/nicosResearchAndDevelopment/APRE/tree/main/v1/"
+  },
+  "id": "@id",
+  "type": "@type",
+  "VerifiableAttestation": {
+    "@id": "https://github.com/nicosResearchAndDevelopment/APRE/tree/main/v1/VerifiableAttestation",
+    "@type": "owl:Class",
+    "rdfs:subClassOf": "cred:VerifiableCredential"
+  },
+  "VerifiableID": {
+    "@id": "https://github.com/nicosResearchAndDevelopment/APRE/tree/main/v1/VerifiableID",
+    "@type": "owl:Class",
+    "rdfs:subClassOf": "apre:VerifiableAttestation",
+    "@context": {
+      "@version": 1,
+      "@protected": true,
+      "id": "@id",
+      "type": "@type",
+      "apre": "https://github.com/nicosResearchAndDevelopment/APRE/tree/main/v1/",
+      "xetsi-esi": "https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/credentials/x-etsi#",
+      "organizationIdentifier": {
+        "@id": "apre:organizationIdentifier",
+        "@type": "xetsi-esi:id-etsi-qcs-SemanticsId-Legal"
+      }
+    }
+  },
+  "VerifiableAuthorisation": {
+    "@id": "https://github.com/nicosResearchAndDevelopment/APRE/tree/main/v1/VerifiableAuthorisation",
+    "@type": "owl:Class",
+    "rdfs:subClassOf": "apre:VerifiableAttestation"
+  },
+  "LEARCredential": {
+    "@id": "https://github.com/nicosResearchAndDevelopment/APRE/tree/main/v1/LEARCredential",
+    "@type": "owl:Class",
+    "rdfs:subClassOf": [
+      "apre:VerifiableID",
+      "apre:VerifiableAuthorisation"
+    ]
+  }
+}
