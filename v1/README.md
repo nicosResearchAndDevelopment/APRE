@@ -49,9 +49,9 @@ This document describes the architecture of "Appointed Representatives, acting o
 - [Conventions](#conventions)
 - [Model](#model)
 - [Versions](#versions)
-    - [Version 1.1](#version-1-1)
-    - [Version 1.2](#version-1-2)
-    - [Version 1.3](#version-1-3)
+    - [Version 1.1](#version-11)
+    - [Version 1.2](#version-12)
+    - [Version 1.3](#version-13)
 - [See Also](#see-also)
 - [References](#references)
 
