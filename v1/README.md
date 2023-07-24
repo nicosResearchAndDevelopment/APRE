@@ -119,7 +119,7 @@ Picture taken from [Authentication and authorization of entities acting on behal
 
 Jörg Langkau, nicos AG
 
-This version ("derived" from Jesus' Ruiz Version 1) introduces:
+This version ("derived" from Jesus' Ruiz Version 1.1) introduces:
 
 - layer (yellow) of *Verifiable Natural
   Person* ([ETSI-ESI- and eIDAS-alignment](https://www.etsi.org/deliver/etsi_ts/119600_119699/119612/02.01.01_60/ts_119612v020101p.pdf)) and
@@ -139,7 +139,7 @@ This version ("derived" from Jesus' Ruiz Version 1) introduces:
 
 Langkau, nicos AG
 
-This version ("derived" from Version 2) decouples *Verifiable Attestation* from class [*Verifiable
+This version ("derived" from Version 1.2) decouples *Verifiable Attestation* from class [*Verifiable
 Credential*](https://www.w3.org/TR/vc-data-model-2.0/) (with new naming *Attestation*):
 
 Pros:
