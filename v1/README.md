@@ -49,9 +49,9 @@ This document describes the architecture of "Appointed Representatives, acting o
 - [Conventions](#conventions)
 - [Model](#model)
 - [Versions](#versions)
-    - [Version 1](#version-1)
-    - [Version 2](#version-2)
-    - [Version 3](#version-3)
+    - [Version 1.1](#version-1-1)
+    - [Version 1.2](#version-1-2)
+    - [Version 1.3](#version-1-3)
 - [See Also](#see-also)
 - [References](#references)
 
@@ -100,7 +100,7 @@ Information Model, at this time in `turtle` (`json-ld-@context-thingy` will foll
 
 ## Versions
 
-### Version 1
+### Version 1.1
 
 Jesus Ruiz, Alastria
 
@@ -115,7 +115,7 @@ Picture taken from [Authentication and authorization of entities acting on behal
 
 ---
 
-### Version 2
+### Version 1.2
 
 Jörg Langkau, nicos AG
 
@@ -131,11 +131,11 @@ This version ("derived" from Jesus' Ruiz Version 1) introduces:
 
 ![image](./image/apre.v2.png)
 
-*Overview of "APRE v2".*
+*Overview of "APRE v1.2".*
 
 ---
 
-### Version 3
+### Version 1.3
 
 Langkau, nicos AG
 
@@ -151,11 +151,11 @@ Pros:
 
 ![image](./image/apre.v3.png)
 
-*Overview of "APRE v3"*
+*Overview of "APRE v1.3"*
 
 ---
 
-## APRE Version 1, 2 and 3
+## APRE Version 1.1, 1.2 and 1.3
 
 All versions do the same (from the perspective of class **LEARCredential** and **LEASICredential**).
 
