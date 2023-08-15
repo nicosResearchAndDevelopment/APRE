@@ -607,6 +607,8 @@ apre:purpose
     rdfs:range       apre:Purpose ;      ## TODO: cardinality [0..n]?!?
     ## REM: **OR**
     ## REM: rdfs:range       rdfs:Resource ;
+    ## REM: **OR**
+    ## REM: rdfs:range       xsd:anyURI ;
     rdfs:isDefinedBy apre: .
 ## endregion Authorisation :: property :: purpose
 ## endregion Authorisation :: property
