@@ -18,6 +18,26 @@
 @prefix eidas:                    <https://www.eid.as/> .
 @prefix xeidas:                   <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/credentials/elsi/x-eidas#> .
 
+@prefix xISO-3166-1:              <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/xISO-3166/1#> .
+
+## region eidas
+@prefix eidas-naturalperson:      <http://eidas.europa.eu/attributes/naturalperson/> .
+
+eidas-naturalperson:representative
+    rdfs:isDefinedBy eidas-naturalperson: .
+
+@prefix eidas-legalperson:  <http://eidas.europa.eu/attributes/legalperson/representative/>.
+
+eidas-legalperson:representative
+    rdfs:isDefinedBy eidas-legalperson: .
+
+## first  https://semiceu.github.io/Core-Person-Vocabulary/releases/w3c/
+## better :: https://semiceu.github.io/Core-Person-Vocabulary/releases/2.1.0/
+## >>>       https://semiceu.github.io/Core-Person-Vocabulary/releases/2.1.0/voc/core-person-ap.ttl
+@prefix person:    <http://www.w3.org/ns/person#> .
+
+## endregion eidas
+
 xeidas:
     a                             voaf:Vocabulary ;
     a                             owl:Ontology ;
@@ -25,9 +45,9 @@ xeidas:
     rdfs:label                    "The eIDAS Extension Ontology"@en ;
     dct:title                     "Model for eIDAS Extension"@en ;
     dct:description               """."""@en ;
-    dct:creator                   <https:jottomat.solidweb.org/profile/card#me> ;
-    dct:creator                   <https:jottomat.solidweb.org/profile/card#me> ;
-    dct:publisher                 <https:jottomat.solidweb.org/profile/card#me> ;
+    dct:creator                   <https://jottomat.solidweb.org/profile/card#me> ;
+    dct:creator                   <https://jottomat.solidweb.org/profile/card#me> ;
+    dct:publisher                 <https://jottomat.solidweb.org/profile/card#me> ;
     dct:created                   "2023-05-22"^^xsd:date ;
     dct:modified                  "2023-05-22"^^xsd:date ;
     owl:versionInfo               "0.0.1" ;
@@ -35,7 +55,10 @@ xeidas:
     vann:preferredNamespacePrefix "xeidas:" ;
     void:vocabulary               vann:, void:, voaf:, dct: ;
     rdfs:comment                  """"""@en ;
-    rdfs:isDefinedBy              <https:jottomat.solidweb.org/profile/card#me> ; .
+    rdfs:isDefinedBy              <https://jottomat.solidweb.org/profile/card#me> ; .
+
+## https://ec.europa.eu/digital-building-blocks/wikis/download/attachments/467109280/eIDAS%20Common%20Attributes%20v1.pdf?version=2&modificationDate=1686919630085&api=v2
+
 
 xeidas:id-etsi-qcs-SemanticsId-eIDASNatural
     a                rdfs:Datatype ;
@@ -70,15 +93,24 @@ xeidas:FamilyName
     rdfs:range       xsd:string ;
     rdfs:isDefinedBy xeidas: .
 
-xeidas:FirstName
+xeidas:CountryOfBirth
     a                owl:DatatypeProperty ;
     a                skos:Concept ;
-    skos:notation    "FirstName"^^xsd:string ;
-    skos:prefLabel   "First name"^^xsd:string ;
-    skos:related     xoid:givenName ;
-    ## TODO: TBC: rdfs:domain        ??? ;
-    ## REM: cardinality :: [0..1]
+    skos:notation    "CountryOfBirth"^^xsd:string ;
+    skos:prefLabel   "Country of Birth"^^xsd:string ;
     rdfs:range       xsd:string ;
+    ## REM: eIDAS ::  ISO 3166-1 alpha2 country code values
+    ## rdfs:range       xISO-3166-1:id-ISO-3166-1-SemanticsId-ALPHA-2 ;
+    rdfs:isDefinedBy xeidas: .
+
+xeidas:CountryOfResidence
+    a                owl:DatatypeProperty ;
+    a                skos:Concept ;
+    skos:notation    "CountryOfResidence"^^xsd:string ;
+    skos:prefLabel   "Country of Residence"^^xsd:string ;
+    rdfs:range       xsd:string ;
+    ## REM: eIDAS ::  ISO 3166-1 alpha2 country code values
+    ## rdfs:range       xISO-3166-1:id-ISO-3166-1-SemanticsId-ALPHA-2 ;
     rdfs:isDefinedBy xeidas: .
 
 xeidas:DateOfBirth
@@ -90,6 +122,44 @@ xeidas:DateOfBirth
     ## TODO: TBC: rdfs:domain        ??? ;
     rdfs:range       xoid:generalizedTime ;         ## REM: cardinality :: [0..1]
     rdfs:isDefinedBy xeidas: .
+
+xeidas:EmailAddress
+    a                owl:DatatypeProperty ;
+    a                skos:Concept ;
+    skos:notation    "EmailAddress"^^xsd:string ;
+    skos:prefLabel   "Email Address"^^xsd:string ;
+    rdfs:range       xsd:string ;
+    rdfs:isDefinedBy xeidas: .
+
+xeidas:Nationality
+    a                owl:DatatypeProperty ;
+    a                skos:Concept ;
+    skos:notation    "Nationality"^^xsd:string ;
+    skos:prefLabel   "Nationality"^^xsd:string ;
+    rdfs:range       xsd:string ;
+    ## REM: eIDAS ::  ISO 3166-1 alpha2 country code values
+    ## rdfs:range       xISO-3166-1:id-ISO-3166-1-SemanticsId-ALPHA-2 ;
+    rdfs:isDefinedBy xeidas: .
+
+xeidas:PhoneNumber
+    a                owl:DatatypeProperty ;
+    a                skos:Concept ;
+    skos:notation    "PhoneNumber"^^xsd:string ;
+    skos:prefLabel   "Phonenumber"^^xsd:string ;
+    rdfs:range       xsd:string ;
+    ## REM: eIDAS ::  ISO 3166-1 alpha2 country code values
+    ## rdfs:range       xISO-3166-1:id-ISO-3166-1-SemanticsId-ALPHA-2 ;
+    rdfs:isDefinedBy xeidas: .
+
+xeidas:TownOfBirth
+    a                owl:DatatypeProperty ;
+    a                skos:Concept ;
+    skos:notation    "TownOfBirth"^^xsd:string ;
+    skos:prefLabel   "Town of Birth"^^xsd:string ;
+    rdfs:range       xsd:string ;
+    rdfs:isDefinedBy xeidas: .
+
+##########################
 
 xeidas:id-etsi-qcs-SemanticsId-eIDASLegal
     a                rdfs:Datatype ;
@@ -162,4 +232,4 @@ xeidas:identifier
 
 ## endregion LegalPersonIdentifierExpanded
 
-## EOF: x-eidas.ttl
+###

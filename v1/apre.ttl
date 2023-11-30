@@ -28,9 +28,9 @@ apre:
     rdfs:label                    "The Appointed Representative (APRE) Ontology"@en ;
     dct:title                     "Model for APRE"@en ;
     dct:description               """."""@en ;
-    dct:creator                   <https:jottomat.solidweb.org/profile/card#me> ;
-    dct:creator                   <https:jottomat.solidweb.org/profile/card#me> ;
-    dct:publisher                 <https:jottomat.solidweb.org/profile/card#me> ;
+    dct:creator                   <https://jottomat.solidweb.org/profile/card#me> ;
+    dct:creator                   <https://jottomat.solidweb.org/profile/card#me> ;
+    dct:publisher                 <https://jottomat.solidweb.org/profile/card#me> ;
     dct:created                   "2023-05-24"^^xsd:date ;
     dct:modified                  "2023-07-17"^^xsd:date ;
     owl:versionInfo               "1.0.1" ;
@@ -38,7 +38,7 @@ apre:
     vann:preferredNamespacePrefix "apre:" ;
     void:vocabulary               vann:, void:, voaf:, dct: ;
     rdfs:comment                  """"""@en ;
-    rdfs:isDefinedBy              <https:jottomat.solidweb.org/profile/card#me> ; .
+    rdfs:isDefinedBy              <https://jottomat.solidweb.org/profile/card#me> ; .
 
 apre:Attestation
     a                owl:Class ;        ## TODO: TBD: abstract?

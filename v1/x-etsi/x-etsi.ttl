@@ -25,9 +25,9 @@ xetsi-esi:
     rdfs:label                    "The ETSI Extension Ontology"@en ;
     dct:title                     "Model for ETSI Extension"@en ;
     dct:description               """."""@en ;
-    dct:creator                   <https:jottomat.solidweb.org/profile/card#me> ;
-    dct:creator                   <https:jottomat.solidweb.org/profile/card#me> ;
-    dct:publisher                 <https:jottomat.solidweb.org/profile/card#me> ;
+    dct:creator                   <https://jottomat.solidweb.org/profile/card#me> ;
+    dct:creator                   <https://jottomat.solidweb.org/profile/card#me> ;
+    dct:publisher                 <https://jottomat.solidweb.org/profile/card#me> ;
     dct:created                   "2023-05-09"^^xsd:date ;
     dct:modified                  "2023-05-09"^^xsd:date ;
     owl:versionInfo               "0.0.1" ;
@@ -35,7 +35,7 @@ xetsi-esi:
     vann:preferredNamespacePrefix "xetsi:" ;
     void:vocabulary               vann:, void:, voaf:, dct: ;
     rdfs:comment                  """"""@en ;
-    rdfs:isDefinedBy              <https:jottomat.solidweb.org/profile/card#me> ; .
+    rdfs:isDefinedBy              <https://jottomat.solidweb.org/profile/card#me> ; .
 
 
 xetsi-esi:id-etsi-qcs-SemanticsId-Natural
