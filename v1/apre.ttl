@@ -17,7 +17,7 @@
 @prefix etsi:                     <https://www.etsi.org/> .
 @prefix xetsi-esi:                <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/credentials/x-etsi#> .
 @prefix eidas:                    <https://www.eid.as/> .
-@prefix xeidas:                   <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/credentials/x-eidas#> .
+@prefix x-eidas:                   <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/credentials/x-eidas#> .
 
 @prefix apre:                     <https://github.com/nicosResearchAndDevelopment/APRE/tree/main/v1/> .
 
@@ -152,7 +152,7 @@ apre:serialNumber
     skos:prefLabel   "serialNumber"^^xsd:string ;
     skos:related     apre:2.5.4.5 ;
     skos:related     oidref:2.5.4.5 ;
-    skos:related     xeidas:PersonIdentifier ;
+    skos:related     x-eidas:PersonIdentifier ;
     ## TODO: TBC: skos:broader     oidref:2.5.4.5 ;
     # REM: used in 'VerifiableNP' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     rdfs:domain      apre:NaturalPerson ;
@@ -172,7 +172,7 @@ apre:2.5.4.5
     skos:prefLabel   "serialNumber"^^xsd:string ;
     skos:related     apre:serialNumber ;
     skos:related     oidref:2.5.4.5 ;
-    skos:related     xeidas:PersonIdentifier ;
+    skos:related     x-eidas:PersonIdentifier ;
     ## TODO: TBC: skos:broader     oidref:2.5.4.5 ;
     ## TODO: TBC: is 'xsd:string' AND 'xetsi-esi:id-etsi-qcs-SemanticsId-Natural' correct?!?
     rdfs:range       xsd:string ;            ## TODO: cardinality []
@@ -240,7 +240,7 @@ apre:surname
     skos:related     apre:sn ;
     skos:related     apre:2.5.4.4 ;
     skos:related     oidref:2.5.4.4 ;
-    skos:related     xeidas:FamilyName ;
+    skos:related     x-eidas:FamilyName ;
     # REM: used in 'VerifiableNP' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     rdfs:domain      apre:NaturalPerson ;
     rdfs:range       xsd:string ;            ## TODO: cardinality []
@@ -257,7 +257,7 @@ apre:2.5.4.4
     skos:prefLabel   "surname"^^xsd:string ;
     skos:related     apre:sn ;
     skos:related     apre:surname ;
-    skos:related     xeidas:FamilyName ;
+    skos:related     x-eidas:FamilyName ;
     skos:related     oidref:2.5.4.4 ;
     rdfs:range       xsd:string ;            ## TODO: cardinality []
     rdfs:seeAlso     <http://oid-info.com/get/2.5.4.4> ;
@@ -273,7 +273,7 @@ apre:givenName
     skos:prefLabel   "givenName"^^xsd:string ;
     skos:related     apre:2.5.4.42 ;
     skos:related     oidref:2.5.4.42 ;
-    skos:related     xeidas:FirstName ;
+    skos:related     x-eidas:FirstName ;
     # REM: used in 'VerifiableNP' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     rdfs:domain      apre:NaturalPerson ;
     rdfs:range       xsd:string ;            ## TODO: cardinality []
@@ -290,7 +290,7 @@ apre:2.5.4.42
     skos:prefLabel   "givenName"^^xsd:string ;
     skos:related     apre:givenName ;
     skos:related     oidref:2.5.4.42 ;
-    skos:related     xeidas:FirstName ;
+    skos:related     x-eidas:FirstName ;
     rdfs:range       xsd:string ;            ## TODO: cardinality []
     rdfs:seeAlso     <http://oid-info.com/get/2.5.4.42> ;
     rdfs:isDefinedBy apre: .
@@ -306,7 +306,7 @@ apre:dateOfBirth
     skos:prefLabel   "dateOfBirth"^^xsd:string ;
     skos:related     apre:1.3.6.1.5.5.7.9.1 ;
     skos:related     oidref:1.3.6.1.5.5.7.9.1 ;
-    skos:related     xeidas:DateOfBirth ;
+    skos:related     x-eidas:DateOfBirth ;
     # REM: used in 'VerifiableNP' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     rdfs:domain      apre:NaturalPerson ;
     rdfs:range       xsd:string ;            ## TODO: cardinality []
@@ -323,7 +323,7 @@ apre:id-pda-dateOfBirth
     skos:prefLabel   "dateOfBirth"^^xsd:string ;
     skos:related     apre:description ;
     skos:related     oidref:1.3.6.1.5.5.7.9.1 ;
-    skos:related     xeidas:DateOfBirth ;
+    skos:related     x-eidas:DateOfBirth ;
     rdfs:range       xsd:string ;            ## TODO: cardinality []
     rdfs:seeAlso     <http://oid-info.com/get/1.3.6.1.5.5.7.9.1> ;
     rdfs:isDefinedBy apre: .
@@ -338,7 +338,7 @@ apre:1.3.6.1.5.5.7.9.1
     skos:prefLabel   "dateOfBirth"^^xsd:string ;
     skos:related     apre:description ;
     skos:related     oidref:1.3.6.1.5.5.7.9.1 ;
-    skos:related     xeidas:DateOfBirth ;
+    skos:related     x-eidas:DateOfBirth ;
     rdfs:range       xsd:string ;            ## TODO: cardinality []
     rdfs:seeAlso     <http://oid-info.com/get/1.3.6.1.5.5.7.9.1> ;
     rdfs:isDefinedBy apre: .
@@ -418,7 +418,7 @@ ID id-at-organizationIdentifier}
     skos:prefLabel     "organizationIdentifier"^^xsd:string ;
     skos:broader       oidref:2.5.4.97 ;
     skos:related       apre:2.5.4.97 ;
-    skos:related       xeidas:LegalPersonIdentifier ;
+    skos:related       x-eidas:LegalPersonIdentifier ;
     # REM: used in 'VerifiableNP' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     rdfs:domain        apre:NaturalPerson ;
     rdfs:domain        apre:ArtificialAgent ;
@@ -436,7 +436,7 @@ apre:2.5.4.97
     skos:prefLabel   "organizationIdentifier"^^xsd:string ;
     skos:broader     oidref:2.5.4.97 ;
     skos:related     apre:organizationIdentifier ;
-    skos:related     xeidas:LegalPersonIdentifier ;
+    skos:related     x-eidas:LegalPersonIdentifier ;
     rdfs:range       xetsi-esi:id-etsi-qcs-SemanticsId-Legal ;            ## TODO: cardinality []
     rdfs:seeAlso     <http://oid-info.com/get/2.5.4.97> ;
     rdfs:seeAlso     <https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.04.01_60/en_31941201v010401p.pdf#5.1.4> ;
@@ -507,7 +507,7 @@ apre:ou
     skos:related     apre:organizationUnitName ;
     skos:related     apre:2.5.4.11 ;
     skos:related     oidref:2.5.4.11 ;
-    skos:related     xeidas:LegalName ;
+    skos:related     x-eidas:LegalName ;
     rdfs:domain      apre:NaturalPerson ;
     rdfs:domain      apre:ArtificialAgent ;
     rdfs:range       xsd:string ;            ## TODO: cardinality [0..1]
@@ -526,7 +526,7 @@ apre:organizationUnitName
     skos:related     apre:ou ;
     skos:related     apre:2.5.4.11 ;
     skos:related     oidref:2.5.4.11 ;
-    skos:related     xeidas:LegalName ;
+    skos:related     x-eidas:LegalName ;
     # REM: used in 'VerifiableNP' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     rdfs:domain      apre:NaturalPerson ;
     rdfs:domain      apre:ArtificialAgent ;

@@ -13,7 +13,7 @@
 
 @prefix oidref:                   <https://oidref.com/> .
 @prefix xoid:                     <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/credentials/elsi/x-oid#> .
-@prefix xeidas:                   <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/credentials/elsi/x-eidas#> .
+@prefix x-eidas:                   <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/credentials/elsi/x-eidas#> .
 @prefix etsi:                     <https://www.etsi.org/> .
 @prefix elsi:                     <https://alastria.github.io/did-method-elsi/> .
 @prefix xetsi-esi:                <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/credentials/elsi/x-etsi#> .
@@ -44,7 +44,7 @@ xetsi-esi:id-etsi-qcs-SemanticsId-Natural
     rdfs:label       "Natural person semantics identifier Data Type"@en ;
     a                skos:Concept ;
     skos:related     xoid:serialNumber ;
-    skos:related     xeidas:id-etsi-qcs-SemanticsId-eIDASNatural ;
+    skos:related     x-eidas:id-etsi-qcs-SemanticsId-eIDASNatural ;
     rdfs:comment     """Also used by 'xoid:serialNumber' - or other properties hosting some identifiers."""@en ;
     rdfs:seeAlso     <https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.04.01_60/en_31941201v010401p.pdf#5.1.3> ;
     rdfs:seeAlso     <xoid:serialNumber> ;
@@ -62,7 +62,7 @@ xetsi-esi:id-etsi-qcs-SemanticsId-Legal
     a                skos:Concept ;
     skos:related     xoid:organizationIdentifier ;                      ## REM: SKOS;xoid
     skos:related     xetsi-esi:organizationIdentifier ;
-    skos:related     xeidas:id-etsi-qcs-SemanticsId-eIDASLegal ;        ## REM: SKOS;xoid
+    skos:related     x-eidas:id-etsi-qcs-SemanticsId-eIDASLegal ;        ## REM: SKOS;xoid
     rdfs:comment     """Also used by 'xoid:organizationIdentifier' - or other properties hosting some identifiers."""@en ;
     rdfs:seeAlso     <https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.04.01_60/en_31941201v010401p.pdf#5.1.4> ;
     rdfs:seeAlso     <xoid:organizationIdentifier> ;
@@ -143,7 +143,7 @@ xetsi-esi:organizationIdentifier
     skos:notation      "organizationIdentifier"^^xsd:string ;
     skos:prefLabel     "organizationIdentifier"^^xsd:string ;
     skos:broader       xoid:organizationIdentifier ;
-    skos:related       xeidas:LegalPersonIdentifier ;
+    skos:related       x-eidas:LegalPersonIdentifier ;
     ## REM: As long we did **NOT** made the class 'xetsi-esi:Organization' we can't work on this
 #    rdfs:domain        xetsi-esi:Organization ;
     ## REM: cardinality :: [0..1]
@@ -201,7 +201,7 @@ xetsi-esi:Subject
     org:identifier                   "VATES-4243444546474849"^^xsd:string ;
     org:identifier                   "blablabla"^^xsd:string ;
     xetsi-esi:organizationIdentifier "VATES-4243444546474849"^^xetsi-esi:id-etsi-qcs-SemanticsId-Legal ;
-    xeidas:LegalPersonIdentifier     "VATES-4243444546474849"^^xeidas:id-etsi-qcs-SemanticsId-eIDASLegal ;
+    x-eidas:LegalPersonIdentifier     "VATES-4243444546474849"^^x-eidas:id-etsi-qcs-SemanticsId-eIDASLegal ;
     xetsi-esi:country                <https://germany.example.org/> ;
     rdfs:isDefinedBy                 <https://www.example.com/> .
 

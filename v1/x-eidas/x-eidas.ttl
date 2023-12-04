@@ -16,9 +16,9 @@
 @prefix etsi:                     <https://www.etsi.org/> .
 @prefix xetsi-esi:                <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/credentials/elsi/x-etsi#> .
 @prefix eidas:                    <https://www.eid.as/> .
-@prefix xeidas:                   <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/credentials/elsi/x-eidas#> .
+@prefix x-eidas:                   <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/credentials/elsi/x-eidas#> .
 
-@prefix xISO-3166-1:              <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/xISO-3166/1#> .
+@prefix x-ISO-3166-1:              <https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/x-ISO-3166/1#> .
 
 ## region eidas
 @prefix eidas-naturalperson:      <http://eidas.europa.eu/attributes/naturalperson/> .
@@ -38,7 +38,7 @@ eidas-legalperson:representative
 
 ## endregion eidas
 
-xeidas:
+x-eidas:
     a                             voaf:Vocabulary ;
     a                             owl:Ontology ;
     skos:prefLabel                "The eIDAS Extension Ontology"^^xsd:string ;
@@ -52,7 +52,7 @@ xeidas:
     dct:modified                  "2023-05-22"^^xsd:date ;
     owl:versionInfo               "0.0.1" ;
     vann:preferredNamespaceUri    "https://github.com/nicosResearchAndDevelopment/LDS/blob/main/misc/credentials/x-eidas#" ;
-    vann:preferredNamespacePrefix "xeidas:" ;
+    vann:preferredNamespacePrefix "x-eidas:" ;
     void:vocabulary               vann:, void:, voaf:, dct: ;
     rdfs:comment                  """"""@en ;
     rdfs:isDefinedBy              <https://jottomat.solidweb.org/profile/card#me> ; .
@@ -60,7 +60,7 @@ xeidas:
 ## https://ec.europa.eu/digital-building-blocks/wikis/download/attachments/467109280/eIDAS%20Common%20Attributes%20v1.pdf?version=2&modificationDate=1686919630085&api=v2
 
 
-xeidas:id-etsi-qcs-SemanticsId-eIDASNatural
+x-eidas:id-etsi-qcs-SemanticsId-eIDASNatural
     a                rdfs:Datatype ;
     a                skos:Concept ;
     skos:notation    "id-etsi-qcs-SemanticsId-eIDASNatural"^^xsd:string ;
@@ -68,9 +68,9 @@ xeidas:id-etsi-qcs-SemanticsId-eIDASNatural
     skos:broader     xoid:serialNumber ;
     skos:related     xetsi-esi:id-etsi-qcs-SemanticsId-Natural ;
     rdfs:seeAlso     <https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.04.01_60/en_31941201v010401p.pdf#5.1.5> ;
-    rdfs:isDefinedBy xeidas: .
+    rdfs:isDefinedBy x-eidas: .
 
-xeidas:PersonIdentifier
+x-eidas:PersonIdentifier
     a                owl:DatatypeProperty ;
     # rdfs:subPropertyOf xoid:serialNumber ;
     a                skos:Concept ;
@@ -79,10 +79,10 @@ xeidas:PersonIdentifier
     skos:broader     xoid:serialNumber ;
     ## TODO: TBC: rdfs:domain        ??? ;
     ## REM: cardinality :: [0..1]
-    rdfs:range       xeidas:id-etsi-qcs-SemanticsId-eIDASNatural ;
-    rdfs:isDefinedBy xeidas: .
+    rdfs:range       x-eidas:id-etsi-qcs-SemanticsId-eIDASNatural ;
+    rdfs:isDefinedBy x-eidas: .
 
-xeidas:FamilyName
+x-eidas:FamilyName
     a                owl:DatatypeProperty ;
     a                skos:Concept ;
     skos:notation    "FamilyName"^^xsd:string ;
@@ -91,29 +91,29 @@ xeidas:FamilyName
     ## TODO: TBC: rdfs:domain        ??? ;
     ## REM: cardinality :: [0..1]
     rdfs:range       xsd:string ;
-    rdfs:isDefinedBy xeidas: .
+    rdfs:isDefinedBy x-eidas: .
 
-xeidas:CountryOfBirth
+x-eidas:CountryOfBirth
     a                owl:DatatypeProperty ;
     a                skos:Concept ;
     skos:notation    "CountryOfBirth"^^xsd:string ;
     skos:prefLabel   "Country of Birth"^^xsd:string ;
     rdfs:range       xsd:string ;
     ## REM: eIDAS ::  ISO 3166-1 alpha2 country code values
-    ## rdfs:range       xISO-3166-1:id-ISO-3166-1-SemanticsId-ALPHA-2 ;
-    rdfs:isDefinedBy xeidas: .
+    ## rdfs:range       x-ISO-3166-1:id-ISO-3166-1-SemanticsId-ALPHA-2 ;
+    rdfs:isDefinedBy x-eidas: .
 
-xeidas:CountryOfResidence
+x-eidas:CountryOfResidence
     a                owl:DatatypeProperty ;
     a                skos:Concept ;
     skos:notation    "CountryOfResidence"^^xsd:string ;
     skos:prefLabel   "Country of Residence"^^xsd:string ;
     rdfs:range       xsd:string ;
     ## REM: eIDAS ::  ISO 3166-1 alpha2 country code values
-    ## rdfs:range       xISO-3166-1:id-ISO-3166-1-SemanticsId-ALPHA-2 ;
-    rdfs:isDefinedBy xeidas: .
+    ## rdfs:range       x-ISO-3166-1:id-ISO-3166-1-SemanticsId-ALPHA-2 ;
+    rdfs:isDefinedBy x-eidas: .
 
-xeidas:DateOfBirth
+x-eidas:DateOfBirth
     a                owl:DatatypeProperty ;
     a                skos:Concept ;
     skos:notation    "DateOfBirth"^^xsd:string ;
@@ -121,47 +121,47 @@ xeidas:DateOfBirth
     skos:related     xoid:dateOfBirth ;
     ## TODO: TBC: rdfs:domain        ??? ;
     rdfs:range       xoid:generalizedTime ;         ## REM: cardinality :: [0..1]
-    rdfs:isDefinedBy xeidas: .
+    rdfs:isDefinedBy x-eidas: .
 
-xeidas:EmailAddress
+x-eidas:EmailAddress
     a                owl:DatatypeProperty ;
     a                skos:Concept ;
     skos:notation    "EmailAddress"^^xsd:string ;
     skos:prefLabel   "Email Address"^^xsd:string ;
     rdfs:range       xsd:string ;
-    rdfs:isDefinedBy xeidas: .
+    rdfs:isDefinedBy x-eidas: .
 
-xeidas:Nationality
+x-eidas:Nationality
     a                owl:DatatypeProperty ;
     a                skos:Concept ;
     skos:notation    "Nationality"^^xsd:string ;
     skos:prefLabel   "Nationality"^^xsd:string ;
     rdfs:range       xsd:string ;
     ## REM: eIDAS ::  ISO 3166-1 alpha2 country code values
-    ## rdfs:range       xISO-3166-1:id-ISO-3166-1-SemanticsId-ALPHA-2 ;
-    rdfs:isDefinedBy xeidas: .
+    ## rdfs:range       x-ISO-3166-1:id-ISO-3166-1-SemanticsId-ALPHA-2 ;
+    rdfs:isDefinedBy x-eidas: .
 
-xeidas:PhoneNumber
+x-eidas:PhoneNumber
     a                owl:DatatypeProperty ;
     a                skos:Concept ;
     skos:notation    "PhoneNumber"^^xsd:string ;
     skos:prefLabel   "Phonenumber"^^xsd:string ;
     rdfs:range       xsd:string ;
     ## REM: eIDAS ::  ISO 3166-1 alpha2 country code values
-    ## rdfs:range       xISO-3166-1:id-ISO-3166-1-SemanticsId-ALPHA-2 ;
-    rdfs:isDefinedBy xeidas: .
+    ## rdfs:range       x-ISO-3166-1:id-ISO-3166-1-SemanticsId-ALPHA-2 ;
+    rdfs:isDefinedBy x-eidas: .
 
-xeidas:TownOfBirth
+x-eidas:TownOfBirth
     a                owl:DatatypeProperty ;
     a                skos:Concept ;
     skos:notation    "TownOfBirth"^^xsd:string ;
     skos:prefLabel   "Town of Birth"^^xsd:string ;
     rdfs:range       xsd:string ;
-    rdfs:isDefinedBy xeidas: .
+    rdfs:isDefinedBy x-eidas: .
 
 ##########################
 
-xeidas:id-etsi-qcs-SemanticsId-eIDASLegal
+x-eidas:id-etsi-qcs-SemanticsId-eIDASLegal
     a                rdfs:Datatype ;
     a                skos:Concept ;
     skos:notation    "id-etsi-qcs-SemanticsId-eIDASLegal"^^xsd:string ;
@@ -169,9 +169,9 @@ xeidas:id-etsi-qcs-SemanticsId-eIDASLegal
     skos:related     xoid:organizationIdentifier ;
     skos:related     xetsi-esi:id-etsi-qcs-SemanticsId-Legal ;
     rdfs:seeAlso     <https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.04.01_60/en_31941201v010401p.pdf#5.1.6> ;
-    rdfs:isDefinedBy xeidas: .
+    rdfs:isDefinedBy x-eidas: .
 
-xeidas:LegalPersonIdentifier
+x-eidas:LegalPersonIdentifier
     a                owl:DatatypeProperty ;
     a                skos:Concept ;
     skos:notation    "LegalPersonIdentifier"^^xsd:string ;
@@ -179,10 +179,10 @@ xeidas:LegalPersonIdentifier
     skos:broader     xoid:organizationIdentifier ;
     skos:related     xetsi-esi:organizationIdentifier ;
     ## TODO: TBC: rdfs:domain        ??? ;
-    rdfs:range       xeidas:id-etsi-qcs-SemanticsId-eIDASLegal ;            ## REM: cardinality :: [0..1]
-    rdfs:isDefinedBy xeidas: .
+    rdfs:range       x-eidas:id-etsi-qcs-SemanticsId-eIDASLegal ;            ## REM: cardinality :: [0..1]
+    rdfs:isDefinedBy x-eidas: .
 
-xeidas:LegalName
+x-eidas:LegalName
     a                owl:DatatypeProperty ;
     a                skos:Concept ;
     skos:notation    "LegalName"^^xsd:string ;
@@ -190,45 +190,45 @@ xeidas:LegalName
     skos:broader     xoid:organizationName ;
     ## TODO: TBC: rdfs:domain        ???
     rdfs:range       xsd:string ;                                           ## REM: cardinality :: [0..1]
-    rdfs:isDefinedBy xeidas: .
+    rdfs:isDefinedBy x-eidas: .
 
 ## region LegalPersonIdentifierExpanded
 
-xeidas:LegalPersonIdentifierExpanded
+x-eidas:LegalPersonIdentifierExpanded
     a                owl:Class ;
     a                skos:Concept ;
     skos:notation    "LegalPersonIdentifierExpanded"^^xsd:string ;
     skos:prefLabel   "eIDAS Legal Person Identifier Expanded"^^xsd:string ;
-    skos:related     xeidas:LegalPersonIdentifier ;
-    rdfs:isDefinedBy xeidas: .
+    skos:related     x-eidas:LegalPersonIdentifier ;
+    rdfs:isDefinedBy x-eidas: .
 
 
-xeidas:legalPersonIdentityType
+x-eidas:legalPersonIdentityType
     a                owl:DatatypeProperty ;
     a                skos:Concept ;
     skos:notation    "legalPersonIdentityType"^^xsd:string ;
     skos:prefLabel   "Legal Person Identity Type"^^xsd:string ;
-    rdfs:domain      xeidas:LegalPersonIdentifierExpanded ;
+    rdfs:domain      x-eidas:LegalPersonIdentifierExpanded ;
     rdfs:range       xsd:string ;                               ## REM: cardinality :: [0..1]
-    rdfs:isDefinedBy xeidas: .
+    rdfs:isDefinedBy x-eidas: .
 
-xeidas:countryCode
+x-eidas:countryCode
     a                owl:DatatypeProperty ;
     a                skos:Concept ;
     skos:notation    "countryCode"^^xsd:string ;
     skos:prefLabel   "Country Code"^^xsd:string ;
-    rdfs:domain      xeidas:LegalPersonIdentifierExpanded ;
+    rdfs:domain      x-eidas:LegalPersonIdentifierExpanded ;
     rdfs:range       xsd:string ;                               ## REM: cardinality :: [1..1]
-    rdfs:isDefinedBy xeidas: .
+    rdfs:isDefinedBy x-eidas: .
 
-xeidas:identifier
+x-eidas:identifier
     a                owl:DatatypeProperty ;
     a                skos:Concept ;
     skos:notation    "identifier"^^xsd:string ;
     skos:prefLabel   "Identifier"^^xsd:string ;
-    rdfs:domain      xeidas:LegalPersonIdentifierExpanded ;
+    rdfs:domain      x-eidas:LegalPersonIdentifierExpanded ;
     rdfs:range       xsd:string ;                               ## REM: cardinality :: [1..1]
-    rdfs:isDefinedBy xeidas: .
+    rdfs:isDefinedBy x-eidas: .
 
 ## endregion LegalPersonIdentifierExpanded
 
